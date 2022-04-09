@@ -26,7 +26,6 @@ def register_quandl_daily(run_time: str) -> None:
     )
     storage = Git(
         repo='bluewhale9981/quanlib-flows',
-        branch_name='master',
         flow_path='flows/quandl.py'
     )
 

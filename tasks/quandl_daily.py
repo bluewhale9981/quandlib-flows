@@ -236,7 +236,7 @@ class QuandlPremium:
         return self.config['default']['end_date']
 
     def run(self):
-        self.slack.send(f'Start Quandl daily - run time: {self.run_time}')
+        # self.slack.send(f'Start Quandl daily - run time: {self.run_time}')
 
         # Prepare folders and data.
         self.__pre_start()
