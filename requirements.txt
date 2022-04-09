@@ -1,0 +1,7 @@
+google-cloud-storage==2.2.1
+numpy==1.22.3
+pandas==1.4.1
+Quandl==3.7.0
+requests==2.27.1
+setuptools==60.9.3
+prefect==1.2.0
