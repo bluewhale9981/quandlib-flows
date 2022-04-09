@@ -18,7 +18,7 @@ if SLACK_URL is None:
 
 def register_quandl_daily(run_time: str) -> None:
     run_config = DockerRun(
-        image='gcr.io/quandlib/quandlib-flows:latest',
+        image='gcr.io/quandlib/quandlib-flows:dev',
         env={
             'SLACK_URL': SLACK_URL,
             'RUN_TIME': run_time
