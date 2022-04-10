@@ -14,7 +14,7 @@ def do_something(name: str):
 
 
 with Flow(
-    'test_dummy',
+    'test_dummy_1',
     run_config=LocalRun(labels=['quandl'], env={'some_env': 'some_value'}),
     storage=Git(repo='bluewhale9981/quandlib-flows', flow_path='flows/dummy.py')
 ) as flow:
