@@ -1,5 +1,5 @@
 import os
-from prefect import Flow
+from prefect import Flow, task
 from prefect.run_configs import LocalRun
 from prefect.storage import Git
 # from prefect.schedules import CronSchedule
@@ -8,7 +8,12 @@ from prestart import pre_start
 
 pre_start()
 
-from tasks.quandl_daily import run_quandl_daily
+# from tasks.quandl_daily import run_quandl_daily
+
+
+@task
+def do_something():
+    print('hello')
 
 
 SLACK_URL: str = os.getenv('SLACK_URL')
@@ -33,7 +38,8 @@ def register_quandl_daily(run_time: str) -> None:
         run_config=run_config,
         storage=storage,
     ) as flow:
-        run_quandl_daily(run_time=run_time)
+        # run_quandl_daily(run_time=run_time)
+        do_something()
 
     flow.register(project_name='quandlib', labels=['quandl'])
 
