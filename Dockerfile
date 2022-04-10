@@ -1,19 +1,18 @@
-FROM python:3.9.10
+# FROM python:3.9.10
 
-RUN apt update
+# RUN apt update
 
-RUN pip install --upgrade pip
+# RUN pip install --upgrade pip
+FROM prefecthq/prefect:1.2.0-python3.9
 
-WORKDIR /app
-
-ADD requirements.txt /app/requirements.txt
-
-RUN pip install -r requirements.txt
-
-ADD . /app
+RUN pip install google-cloud-storage \
+    numpy \
+    pandas \
+    Quandl \
+    requests \
+    dulwich
 
 ARG SLACK_URL
 
 ENV SLACK_URL=$SLACK_URL
 
-ENV GOOGLE_APPLICATION_CREDENTIALS=/app/google.json

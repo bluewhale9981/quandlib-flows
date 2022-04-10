@@ -1,6 +1,6 @@
 import os
 from prefect import Flow
-from prefect.run_configs import DockerRun
+from prefect.run_configs import LocalRun
 from prefect.storage import Git
 # from prefect.schedules import CronSchedule
 
@@ -17,8 +17,7 @@ if SLACK_URL is None:
     raise Exception('SLACK_URL is not set.')
 
 def register_quandl_daily(run_time: str) -> None:
-    run_config = DockerRun(
-        image='gcr.io/quandlib/quandlib-flows:dev',
+    run_config = LocalRun(
         env={
             'SLACK_URL': SLACK_URL,
             'RUN_TIME': run_time
@@ -36,7 +35,7 @@ def register_quandl_daily(run_time: str) -> None:
     ) as flow:
         run_quandl_daily(run_time=run_time)
 
-    flow.register(project_name='quandlib', labels=['docker'])
+    flow.register(project_name='quandlib', labels=['quandl'])
 
 
 if __name__ == '__main__':

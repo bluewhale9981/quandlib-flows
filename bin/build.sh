@@ -1,2 +1,2 @@
 #!/bin/bash
-docker build -t gcr.io/quandlib/quandlib-flows .
+docker build -t gcr.io/quandlib/quandlib-flows:dev .

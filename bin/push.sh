@@ -1,2 +1,2 @@
 #!/bin/bash
-docker push gcr.io/quandlib/quandlib-flows
+docker push gcr.io/quandlib/quandlib-flows:dev
