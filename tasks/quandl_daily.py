@@ -257,10 +257,6 @@ class QuandlPremium:
         self.slack.send(message='Task finished!')
 
 
-@task
-def run_quandl_daily(run_time: str):
-    logger = prefect.context.get('logger')
-    logger.info(f'Running Quandl Daily: {run_time}')
-
+def run_quandl_daily():
     quandl_daily = QuandlPremium()
     quandl_daily.run()
