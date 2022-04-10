@@ -2,7 +2,7 @@ from prefect import task, Flow
 from prefect.run_configs import LocalRun
 from prefect.storage import Git
 
-from prestart import pre_start
+from .prestart import pre_start
 
 pre_start()
 
