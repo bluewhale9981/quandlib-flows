@@ -258,6 +258,7 @@ class QuandlPremium:
         self.slack.send(message='Task finished!')
 
 
+@task
 def run_quandl_daily():
     quandl_daily = QuandlPremium()
     quandl_daily.run()

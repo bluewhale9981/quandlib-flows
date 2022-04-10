@@ -1,7 +1,7 @@
 import os
 import typing
 
-from prefect import task, Flow
+from prefect import Flow
 from prefect.run_configs import LocalRun
 from prefect.storage import Git
 
@@ -31,15 +31,8 @@ if GOOGLE_APPLICATION_CREDENTIALS is None:
     raise Exception('GOOGLE_APPLICATION_CREDENTIALS is not set.')
 
 
-@task
-def do_something(name: str):
-    print('hello')
-    print(name)
-    run_quandl_daily()
-
-
 with Flow(
-    'test_dummy_1',
+    'quandl_daily_230pm',
     run_config=LocalRun(
         labels=['quandl'],
         env={
@@ -48,9 +41,9 @@ with Flow(
                 'GOOGLE_APPLICATION_CREDENTIALS': GOOGLE_APPLICATION_CREDENTIALS,
             }
         ),
-    storage=Git(repo='bluewhale9981/quandlib-flows', flow_path='flows/dummy.py')
+    storage=Git(repo='bluewhale9981/quandlib-flows', flow_path='flows/quandl_daily_230pm.py')
 ) as flow:
-    do_something('Jones')
+    run_quandl_daily()
 
 
 if __name__ == '__main__':
