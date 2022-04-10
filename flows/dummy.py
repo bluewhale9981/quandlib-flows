@@ -2,9 +2,17 @@ from prefect import task, Flow
 from prefect.run_configs import LocalRun
 from prefect.storage import Git
 
-from prestart import pre_start
+import sys
+from pathlib import Path # if you haven't already done so
+file = Path(__file__).resolve()
+parent, root = file.parent, file.parents[1]
+sys.path.append(str(root))
 
-pre_start()
+# Additionally remove the current file's directory from sys.path
+try:
+    sys.path.remove(str(parent))
+except ValueError: # Already removed
+    pass
 
 
 @task
