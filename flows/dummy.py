@@ -4,16 +4,17 @@ from prefect.storage import Git
 
 
 @task
-def do_something():
+def do_something(name: str):
     print('hello')
+    print(name)
 
 
-flow = Flow(
+with Flow(
     'test_dummy',
-    run_config=LocalRun(labels=['quandl']),
-    tasks=[do_something],
+    run_config=LocalRun(labels=['quandl'], env={'some_env': 'some_value'}),
     storage=Git(repo='bluewhale9981/quandlib-flows', flow_path='flows/dummy.py')
-)
+) as flow:
+    do_something('Jones')
 
 
 flow.register(project_name='quandlib', labels=['quandl'])
