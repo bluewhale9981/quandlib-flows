@@ -33,17 +33,17 @@ if GOOGLE_APPLICATION_CREDENTIALS is None:
 
 
 with Flow(
-    'quandl_daily_230pm',
+    'quandl_daily_430am',
     run_config=LocalRun(
         labels=['quandl'],
         env={
-                'RUN_TIME': '230pm',
+                'RUN_TIME': '430am',
                 'SLACK_URL': SLACK_URL,
                 'GOOGLE_APPLICATION_CREDENTIALS': GOOGLE_APPLICATION_CREDENTIALS,
             }
         ),
-    storage=Git(repo='bluewhale9981/quandlib-flows', flow_path='flows/quandl_daily_230pm.py'),
-    schedule=CronSchedule('45 19 * * 1-5'),
+    storage=Git(repo='bluewhale9981/quandlib-flows', flow_path='flows/quandl_daily_430am.py'),
+    schedule=CronSchedule('45 8 * * 2-6'),
 ) as flow:
     run_quandl_daily()
 
