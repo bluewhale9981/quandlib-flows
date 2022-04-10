@@ -38,7 +38,7 @@ class QuandlPremium:
 
     def __get_config(self) -> configparser.ConfigParser:
         self.run_time: str = os.getenv('RUN_TIME', '')
-        config_file: str = f'configs/quandl_daily_{self.run_time}.cfg'
+        config_file: str = f'tasks/configs/quandl_daily_{self.run_time}.cfg'
 
         if not os.path.isfile(config_file):
             raise Exception('Config file not found.')
