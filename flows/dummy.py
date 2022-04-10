@@ -21,4 +21,5 @@ with Flow(
     do_something('Jones')
 
 
-flow.register(project_name='quandlib', labels=['quandl'])
+if __name__ == '__main__':
+    flow.register(project_name='quandlib', labels=['quandl'])
