@@ -1,4 +1,5 @@
 import os
+import typing
 
 from prefect import task, Flow
 from prefect.run_configs import LocalRun
@@ -20,10 +21,14 @@ except ValueError: # Already removed
 from tasks.quandl_daily import run_quandl_daily
 
 
-SLACK_URL: str = os.getenv('SLACK_URL')
+SLACK_URL: typing.Optional[str] = os.getenv('SLACK_URL')
+GOOGLE_APPLICATION_CREDENTIALS: typing.Optional[str] = os.getenv('GOOGLE_APPLICATION_CREDENTIALS')
 
 if SLACK_URL is None:
     raise Exception('SLACK_URL is not set.')
+
+if GOOGLE_APPLICATION_CREDENTIALS is None:
+    raise Exception('GOOGLE_APPLICATION_CREDENTIALS is not set.')
 
 
 @task
@@ -35,7 +40,14 @@ def do_something(name: str):
 
 with Flow(
     'test_dummy_1',
-    run_config=LocalRun(labels=['quandl'], env={'RUN_TIME': '230pm', 'SLACK_URL': SLACK_URL}),
+    run_config=LocalRun(
+        labels=['quandl'],
+        env={
+                'RUN_TIME': '230pm',
+                'SLACK_URL': SLACK_URL,
+                'GOOGLE_APPLICATION_CREDENTIALS': GOOGLE_APPLICATION_CREDENTIALS,
+            }
+        ),
     storage=Git(repo='bluewhale9981/quandlib-flows', flow_path='flows/dummy.py')
 ) as flow:
     do_something('Jones')
