@@ -32,7 +32,7 @@ if GOOGLE_APPLICATION_CREDENTIALS is None:
 
 
 with Flow(
-    'fred_download',
+    'download_fred',
     run_config=LocalRun(
         labels=['quandl'],
         env={
