@@ -23,6 +23,7 @@ from tasks.download_fred import run_download_fred
 
 SLACK_URL: typing.Optional[str] = os.getenv('SLACK_URL')
 GOOGLE_APPLICATION_CREDENTIALS: typing.Optional[str] = os.getenv('GOOGLE_APPLICATION_CREDENTIALS')
+FRED_API_KEY: typing.Optional[str] = os.getenv('FRED_API_KEY')
 
 if SLACK_URL is None:
     raise Exception('SLACK_URL is not set.')
@@ -36,6 +37,7 @@ with Flow(
     run_config=LocalRun(
         labels=['quandl'],
         env={
+                'FRED_API_KEY': FRED_API_KEY,
                 'SLACK_URL': SLACK_URL,
                 'GOOGLE_APPLICATION_CREDENTIALS': GOOGLE_APPLICATION_CREDENTIALS,
             }
