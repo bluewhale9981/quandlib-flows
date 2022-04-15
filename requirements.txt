@@ -6,3 +6,4 @@ requests==2.27.1
 setuptools==60.9.3
 prefect==1.2.0
 dulwich==0.20.35
+fredapi==0.5.0

@@ -4,7 +4,6 @@ import typing
 from prefect import Flow
 from prefect.run_configs import LocalRun
 from prefect.storage import Git
-from prefect.schedules import CronSchedule
 
 import sys
 from pathlib import Path  # if you haven't already done so
@@ -19,7 +18,7 @@ except ValueError: # Already removed
     pass
 
 
-from tasks.quandl_daily import run_quandl_daily
+from tasks.fred_download import run_fred_download
 
 
 SLACK_URL: typing.Optional[str] = os.getenv('SLACK_URL')
@@ -33,19 +32,17 @@ if GOOGLE_APPLICATION_CREDENTIALS is None:
 
 
 with Flow(
-    'quandl_daily_230pm',
+    'fred_download',
     run_config=LocalRun(
         labels=['quandl'],
         env={
-                'RUN_TIME': '230pm',
                 'SLACK_URL': SLACK_URL,
                 'GOOGLE_APPLICATION_CREDENTIALS': GOOGLE_APPLICATION_CREDENTIALS,
             }
         ),
-    storage=Git(repo='bluewhale9981/quandlib-flows', flow_path='flows/quandl_daily_230pm.py'),
-    schedule=CronSchedule('45 19 * * 1-5'),
+    storage=Git(repo='bluewhale9981/quandlib-flows', flow_path='flows/fred_download.py'),
 ) as flow:
-    run_quandl_daily()
+    run_fred_download()
 
 
 if __name__ == '__main__':

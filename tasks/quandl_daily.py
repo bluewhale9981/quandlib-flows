@@ -2,7 +2,6 @@ from __future__ import absolute_import
 
 import os
 import time
-import uuid
 import typing
 import shutil
 import prefect
@@ -24,8 +23,7 @@ class QuandlPremium:
 
     def __init__(self):
         # Create slack instace.
-        id = str(uuid.uuid4())
-        self.slack = Slack(title=f'Quanld Daily - {id}')
+        self.slack = Slack(title=f'Quanld Daily')
 
         # Get config from file.
         self.config: configparser.ConfigParser = self.__get_config()
