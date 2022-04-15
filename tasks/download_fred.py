@@ -28,7 +28,7 @@ class DownloadFredData(BaseHandler):
     def __init__(self) -> None:
         logger.info('Init fred_download_data script')
         # Set config file path.
-        self.config_file: str = 'tasks/configs/fred_download.cfg'
+        self.config_file: str = 'quandlib-flows/tasks/configs/fred_download.cfg'
         self.__prestart()
 
         # Get the Fred API key from the environment
