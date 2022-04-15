@@ -21,7 +21,7 @@ from utils.slackbot import Slack
 logger = prefect.context.get('logger')
 
 
-class FredDataDownload(BaseHandler):
+class DownloadFredData(BaseHandler):
     exceed_point_number_message: str = 'This exceeds the maximum number of vintage dates allowed'
     earliest_realtime_start = '2000-01-01'
 
@@ -242,6 +242,6 @@ class FredDataDownload(BaseHandler):
 
 
 @task
-def run_fred_download():
-    fred = FredDataDownload()
+def run_download_fred():
+    fred = DownloadFredData()
     fred.run()

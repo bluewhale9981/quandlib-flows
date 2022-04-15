@@ -18,7 +18,7 @@ except ValueError: # Already removed
     pass
 
 
-from tasks.download_fred import run_fred_download
+from tasks.download_fred import run_download_fred
 
 
 SLACK_URL: typing.Optional[str] = os.getenv('SLACK_URL')
@@ -42,7 +42,7 @@ with Flow(
         ),
     storage=Git(repo='bluewhale9981/quandlib-flows', flow_path='flows/fred_download.py'),
 ) as flow:
-    run_fred_download()
+    run_download_fred()
 
 
 if __name__ == '__main__':
