@@ -7,6 +7,12 @@ import shutil
 class BaseHandler:
     config_file: str
 
+    def prestart(self) -> None:
+        data_path = 'data'
+
+        if not os.path.isdir(data_path):
+            self.create_folder(data_path)
+
     def get_config(self) -> configparser.ConfigParser:
         assert self.config_file is not None
         config_file: str = self.config_file
