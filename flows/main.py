@@ -4,6 +4,9 @@ import typing
 from prefect import Flow
 from prefect.run_configs import LocalRun
 from prefect.storage import Git
+from dotenv import load_dotenv
+
+load_dotenv('.env')
 
 import sys
 from pathlib import Path  # if you haven't already done so
@@ -40,7 +43,7 @@ base_env = {
 }
 
 with Flow(
-    'download_fred',
+    'fred_download',
     run_config=LocalRun(
         labels=['quandl'],
         env=base_env,
@@ -51,7 +54,7 @@ with Flow(
 
 
 with Flow(
-    'download_fred',
+    'fred_preprocessing',
     run_config=LocalRun(
         labels=['quandl'],
         env=base_env,
@@ -59,7 +62,6 @@ with Flow(
     storage=Git(repo='bluewhale9981/quandlib-flows', flow_path='flows/main.py'),
 ) as flow_preprocess_fred:
     run_preprocess_fred()
-
 
 
 if __name__ == '__main__':
