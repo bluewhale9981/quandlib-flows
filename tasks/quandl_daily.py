@@ -156,12 +156,8 @@ class QuandlPremium:
                 merged_data: pd.DataFrame = pd.concat([data, latest_data]) \
                     .drop_duplicates() \
                     .reset_index(drop=True)
-                merged_file_path = os.path.join(
-                    'data',
-                    'merged',
-                    f'{ticker}.pkl',
-                )
-                merged_data.to_pickle(merged_file_path)
+
+                merged_data.to_pickle(latest_file_path)
                 logger.info(f'Merged latest for ticker: {ticker} - {merged_data.shape}')
             else:
                 # Upload the current file to latest.
