@@ -22,7 +22,7 @@ except ValueError: # Already removed
 
 
 from tasks.download_fred import run_download_fred
-from tasks.preprocess_fred import run_preprocess_fred
+from tasks.fred_preprocessing import run_preprocess_fred
 
 
 SLACK_URL: typing.Optional[str] = os.getenv('SLACK_URL')

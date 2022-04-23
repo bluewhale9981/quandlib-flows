@@ -42,7 +42,7 @@ with Flow(
                 'GOOGLE_APPLICATION_CREDENTIALS': GOOGLE_APPLICATION_CREDENTIALS,
             }
         ),
-    storage=Git(repo='bluewhale9981/quandlib-flows', flow_path='flows/download_fred.py'),
+    storage=Git(repo='bluewhale9981/quandlib-flows', flow_path='flows/fred_download.py'),
 ) as flow:
     run_download_fred()
 
