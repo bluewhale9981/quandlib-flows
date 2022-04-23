@@ -13,7 +13,7 @@ except ValueError: # Already removed
     pass
 
 
-from tasks.download_fred import run_download_fred
+from tasks.fred_download import run_download_fred
 from flows.base import BaseFlow
 
 
