@@ -41,7 +41,7 @@ class PreprocessingFredDataConfig:
         self.__read_from_config_file()
 
     def __read_from_config_file(self):
-        self.config_file: str = 'quandlib-flows/configs/preprocess_fred.cfg'
+        self.config_file: str = 'quandlib-flows/tasks/configs/preprocess_fred.cfg'
         self.config: configparser.ConfigParser = self.__get_config()
         name: str
 
