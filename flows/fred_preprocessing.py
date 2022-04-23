@@ -18,7 +18,7 @@ from flows.base import BaseFlow
 
 
 with Flow(
-    'download_fred',
+    'fred_preprocessing',
     run_config=BaseFlow.get_local_run(),
     storage=BaseFlow.get_storage(flow_file='pred_preprocessing.py'),
 ) as flow:
