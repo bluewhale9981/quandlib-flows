@@ -20,7 +20,7 @@ from flows.base import BaseFlow
 with Flow(
     'fred_preprocessing',
     run_config=BaseFlow.get_local_run(),
-    storage=BaseFlow.get_storage(flow_file='pred_preprocessing.py'),
+    storage=BaseFlow.get_storage(flow_file='fred_preprocessing.py'),
 ) as flow:
     run_preprocess_fred()
 
