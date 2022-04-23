@@ -8,6 +8,7 @@ from prefect.run_configs import LocalRun
 SLACK_URL: typing.Optional[str] = os.getenv('SLACK_URL')
 GOOGLE_APPLICATION_CREDENTIALS: typing.Optional[str] = os.getenv('GOOGLE_APPLICATION_CREDENTIALS')
 FRED_API_KEY: typing.Optional[str] = os.getenv('FRED_API_KEY')
+BUCKET_NAME: typing.Optional[str] = os.getenv('BUCKET_NAME')
 
 if SLACK_URL is None:
     raise Exception('SLACK_URL is not set.')
@@ -25,6 +26,7 @@ class BaseFlow:
                     'FRED_API_KEY': FRED_API_KEY,
                     'SLACK_URL': SLACK_URL,
                     'GOOGLE_APPLICATION_CREDENTIALS': GOOGLE_APPLICATION_CREDENTIALS,
+                    'BUCKET_NAME': BUCKET_NAME,
                 }
         )
 
