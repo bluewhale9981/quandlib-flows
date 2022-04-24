@@ -2,6 +2,7 @@ import os
 import typing
 import configparser
 import shutil
+from datetime import datetime
 
 
 class BaseHandler:
@@ -29,10 +30,21 @@ class BaseHandler:
     def get_today(self, output_format: typing.Optional[str] = None) -> str:
         if output_format is None:
             output_format = '%Y-%m-%d'
+        today: str
 
-        if 'end_date' not in self.config['default']:
-            return datetime.now().strftime(output_format)
-        return self.config['default']['end_date']
+        try:
+            today = self.config['default']['end_date']
+        except:
+            today = datetime.now().strftime(output_format)
+
+        return today
+
+    @staticmethod
+    def get_config_key(config: configparser.ConfigParser, key: str, default: typing.Any) -> typing.Any:
+        if key in config:
+            return config[key]
+
+        return default
 
     @staticmethod
     def remove_previous() -> None:
