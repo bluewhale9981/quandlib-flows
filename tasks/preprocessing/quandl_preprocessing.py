@@ -22,7 +22,7 @@ logger = prefect.context.get('logger')
 
 class QuandlPreprocessing(BaseHandler):
 
-    config_file: str = 'quandlib-flows/tasks/configs/fred_download.cfg'
+    config_file: str = 'quandlib-flows/tasks/configs/quandl_preprocessing.cfg'
     # config_file: str = 'tasks/configs/quandl_preprocessing.cfg'
 
     def __init__(self) -> None:
