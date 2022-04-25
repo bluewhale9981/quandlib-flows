@@ -19,7 +19,7 @@ except ValueError: # Already removed
     pass
 
 
-from tasks.quandl_daily import run_quandl_daily
+from tasks.data_fetching.quandl_daily import run_quandl_daily
 
 
 SLACK_URL: typing.Optional[str] = os.getenv('SLACK_URL')

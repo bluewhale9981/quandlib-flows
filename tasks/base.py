@@ -5,6 +5,10 @@ import shutil
 from datetime import datetime
 
 
+class BaseConfiguration:
+    config_file: str
+    field_map: typing.Dict[str, typing.Any]
+
 class BaseHandler:
     config_file: str
 

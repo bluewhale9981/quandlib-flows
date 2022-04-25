@@ -21,8 +21,8 @@ except ValueError: # Already removed
     pass
 
 
-from tasks.fred_download import run_download_fred
-from tasks.fred_preprocessing import run_preprocess_fred
+from tasks.data_fetching.fred_download import run_download_fred
+from tasks.preprocessing.fred_preprocessing import run_preprocess_fred
 
 
 SLACK_URL: typing.Optional[str] = os.getenv('SLACK_URL')

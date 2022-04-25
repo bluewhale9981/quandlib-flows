@@ -13,7 +13,7 @@ except ValueError: # Already removed
     pass
 
 
-from tasks.fred_preprocessing import run_preprocess_fred
+from tasks.preprocessing.fred_preprocessing import run_preprocess_fred
 from flows.base import BaseFlow
 
 
