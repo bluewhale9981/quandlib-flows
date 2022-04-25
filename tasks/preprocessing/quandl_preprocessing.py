@@ -37,7 +37,7 @@ class QuandlPreprocessing(BaseHandler):
         self.storage = GoogleCloudStorage(bucket_name=os.getenv('BUCKET_NAME'))
 
         # Create Slack instace to send messages.
-        self.slack = Slack(title='FRED download')
+        self.slack = Slack(title='Quandl Preprocessing')
 
         self.__pre_start()
 
